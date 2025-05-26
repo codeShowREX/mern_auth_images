@@ -1,0 +1,445 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles for better touch handling */
+html {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Enhanced responsive typography */
+h1 {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
+}
+
+h2 {
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold;
+}
+
+h3 {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium;
+}
+
+/* Touch-friendly buttons */
+.touch-button {
+  @apply min-h-[44px] min-w-[44px] px-4 py-2 rounded-lg transition-all duration-200;
+}
+
+/* Enhanced responsive containers */
+.container-responsive {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12;
+}
+
+/* Improved responsive grid */
+.responsive-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6;
+}
+
+/* Enhanced form elements for touch */
+.responsive-input {
+  @apply w-full p-3 sm:p-4 text-base sm:text-lg rounded-lg border border-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50;
+}
+
+/* Improved card design */
+.responsive-card {
+  @apply p-4 sm:p-6 bg-gray-800 bg-opacity-50 rounded-xl border border-gray-700 shadow-lg hover:shadow-xl transition-all duration-200;
+}
+
+/* Enhanced loading states */
+.loading-spinner {
+  @apply w-8 h-8 sm:w-12 sm:h-12 border-4 border-t-4 border-t-green-500 border-green-200 rounded-full animate-spin;
+}
+
+/* Improved toast notifications */
+.toast-container {
+  @apply fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md px-4;
+}
+
+/* Enhanced mobile menu */
+.mobile-menu {
+  @apply fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform transition-transform duration-300 ease-in-out backdrop-blur-lg;
+}
+
+/* Improved navigation */
+.nav-link {
+  @apply block py-3 px-4 text-base sm:text-lg hover:bg-gray-800 rounded-lg transition-colors duration-200;
+}
+
+/* Enhanced modal */
+.modal-container {
+  @apply fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 backdrop-blur-sm;
+}
+
+.modal-content {
+  @apply bg-gray-800 bg-opacity-90 rounded-xl p-4 sm:p-6 max-w-4xl w-full shadow-2xl;
+}
+
+/* Improved table responsiveness */
+.responsive-table {
+  @apply w-full overflow-x-auto -mx-4 sm:mx-0;
+}
+
+/* Enhanced footer */
+.footer {
+  @apply py-6 sm:py-8 md:py-12;
+}
+
+/* Improved header */
+.header {
+  @apply py-4 sm:py-6 md:py-8 sticky top-0 z-40 backdrop-blur-lg bg-gray-900 bg-opacity-80;
+}
+
+/* Enhanced sidebar */
+.sidebar {
+  @apply fixed inset-y-0 left-0 w-64 bg-gray-900 transform transition-transform duration-300 ease-in-out shadow-xl;
+}
+
+/* Improved main content */
+.main-content {
+  @apply ml-0 sm:ml-64 transition-all duration-300 ease-in-out;
+}
+
+/* Enhanced avatar */
+.avatar {
+  @apply w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-green-500;
+}
+
+/* Improved badge */
+.badge {
+  @apply px-2 py-1 text-xs sm:text-sm rounded-full font-medium;
+}
+
+/* Enhanced tooltip */
+.tooltip {
+  @apply absolute z-50 px-3 py-2 text-sm bg-gray-900 text-white rounded-lg shadow-lg;
+}
+
+/* Improved dropdown */
+.dropdown {
+  @apply absolute z-50 mt-2 w-48 sm:w-56 bg-gray-800 rounded-lg shadow-xl border border-gray-700;
+}
+
+/* Enhanced tabs */
+.tabs {
+  @apply flex space-x-2 sm:space-x-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
+}
+
+.tab {
+  @apply px-4 py-2 text-sm sm:text-base whitespace-nowrap rounded-lg transition-colors duration-200;
+}
+
+/* Improved pagination */
+.pagination {
+  @apply flex justify-center space-x-2 sm:space-x-4 mt-6 sm:mt-8;
+}
+
+.page-item {
+  @apply px-4 py-2 text-sm sm:text-base rounded-lg transition-colors duration-200;
+}
+
+/* Enhanced search */
+.search-container {
+  @apply relative w-full max-w-xl mx-auto;
+}
+
+.search-input {
+  @apply w-full pl-12 pr-4 py-3 text-base rounded-lg border border-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50;
+}
+
+/* Improved filter */
+.filter-container {
+  @apply flex flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8;
+}
+
+.filter-item {
+  @apply px-4 py-2 text-sm sm:text-base rounded-lg transition-colors duration-200;
+}
+
+/* Enhanced stats */
+.stats-container {
+  @apply grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8;
+}
+
+.stat-item {
+  @apply p-4 sm:p-6 text-center rounded-xl bg-gray-800 bg-opacity-50;
+}
+
+/* Improved chart */
+.chart-container {
+  @apply w-full h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden;
+}
+
+/* Enhanced map */
+.map-container {
+  @apply w-full h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden;
+}
+
+/* Improved calendar */
+.calendar-container {
+  @apply w-full max-w-4xl mx-auto;
+}
+
+.calendar-grid {
+  @apply grid grid-cols-7 gap-1 sm:gap-2;
+}
+
+.calendar-day {
+  @apply p-2 sm:p-4 text-sm sm:text-base rounded-lg transition-colors duration-200;
+}
+
+/* Enhanced timeline */
+.timeline-container {
+  @apply relative pl-8 sm:pl-12;
+}
+
+.timeline-item {
+  @apply mb-6 sm:mb-8;
+}
+
+/* Improved carousel */
+.carousel-container {
+  @apply relative w-full overflow-hidden rounded-xl;
+}
+
+.carousel-item {
+  @apply w-full h-48 sm:h-64 md:h-80 rounded-xl;
+}
+
+/* Enhanced gallery */
+.gallery-container {
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4;
+}
+
+.gallery-item {
+  @apply aspect-square rounded-xl overflow-hidden;
+}
+
+/* Improved form */
+.form-container {
+  @apply max-w-md sm:max-w-lg mx-auto;
+}
+
+.form-group {
+  @apply mb-6 sm:mb-8;
+}
+
+.form-label {
+  @apply block text-sm sm:text-base mb-2 font-medium;
+}
+
+.form-input {
+  @apply w-full p-3 sm:p-4 text-base rounded-lg border border-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50;
+}
+
+.form-error {
+  @apply text-red-500 text-sm mt-1;
+}
+
+/* Enhanced button group */
+.button-group {
+  @apply flex flex-wrap gap-2 sm:gap-4;
+}
+
+.button {
+  @apply px-4 py-2 sm:px-6 sm:py-3 text-base rounded-lg transition-all duration-200;
+}
+
+/* Improved alert */
+.alert {
+  @apply p-4 sm:p-6 mb-4 sm:mb-6 rounded-xl;
+}
+
+.alert-success {
+  @apply bg-green-500 bg-opacity-20 text-green-400 border border-green-500;
+}
+
+.alert-error {
+  @apply bg-red-500 bg-opacity-20 text-red-400 border border-red-500;
+}
+
+.alert-warning {
+  @apply bg-yellow-500 bg-opacity-20 text-yellow-400 border border-yellow-500;
+}
+
+.alert-info {
+  @apply bg-blue-500 bg-opacity-20 text-blue-400 border border-blue-500;
+}
+
+/* Enhanced progress */
+.progress-container {
+  @apply w-full h-2 sm:h-3 bg-gray-700 rounded-full overflow-hidden;
+}
+
+.progress-bar {
+  @apply h-full bg-green-500 transition-all duration-300;
+}
+
+/* Improved skeleton */
+.skeleton {
+  @apply animate-pulse bg-gray-700 rounded-lg;
+}
+
+.skeleton-text {
+  @apply h-4 sm:h-5 w-3/4 rounded;
+}
+
+.skeleton-avatar {
+  @apply w-12 h-12 sm:w-16 sm:h-16 rounded-full;
+}
+
+.skeleton-image {
+  @apply w-full h-48 sm:h-64 rounded-xl;
+}
+
+/* Enhanced code block */
+.code-block {
+  @apply p-4 sm:p-6 overflow-x-auto rounded-xl bg-gray-800;
+}
+
+.code-line {
+  @apply text-sm sm:text-base;
+}
+
+/* Improved markdown */
+.markdown {
+  @apply prose prose-invert max-w-none;
+}
+
+.markdown h1 {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8;
+}
+
+.markdown h2 {
+  @apply text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6;
+}
+
+.markdown h3 {
+  @apply text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4;
+}
+
+.markdown p {
+  @apply text-base sm:text-lg mb-4 sm:mb-6;
+}
+
+.markdown ul {
+  @apply list-disc pl-4 sm:pl-6 mb-4 sm:mb-6;
+}
+
+.markdown ol {
+  @apply list-decimal pl-4 sm:pl-6 mb-4 sm:mb-6;
+}
+
+.markdown li {
+  @apply text-base sm:text-lg mb-2;
+}
+
+.markdown code {
+  @apply px-2 py-1 text-sm sm:text-base bg-gray-800 rounded;
+}
+
+.markdown pre {
+  @apply p-4 sm:p-6 bg-gray-800 rounded-xl overflow-x-auto;
+}
+
+.markdown blockquote {
+  @apply pl-4 sm:pl-6 border-l-4 border-gray-700 italic;
+}
+
+.markdown table {
+  @apply w-full overflow-x-auto;
+}
+
+.markdown th {
+  @apply px-4 py-2 text-sm sm:text-base font-bold;
+}
+
+.markdown td {
+  @apply px-4 py-2 text-sm sm:text-base;
+}
+
+/* Enhanced print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+  
+  .print-only {
+    display: block;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .page-break {
+    page-break-before: always;
+  }
+  
+  img {
+    max-width: 100% !important;
+  }
+  
+  .container-responsive {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .hover-only {
+    display: none;
+  }
+  
+  .touch-button {
+    @apply active:scale-95;
+  }
+  
+  .nav-link {
+    @apply py-4;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .text-gray-300 {
+    @apply text-white;
+  }
+  
+  .bg-gray-800 {
+    @apply bg-black;
+  }
+  
+  .border-gray-700 {
+    @apply border-white;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+} 
