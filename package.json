@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development nodemon backend/index.js",
 		"start": "cross-env NODE_ENV=production node backend/index.js",
-		"build": "npm install && npm install --prefix frontend/vite-project && npm run build --prefix frontend/vite-project"
+		"build": "npm install && node -e \"require('fs').copyFileSync('backend/config.example.js', 'backend/config.js')\" && npm install --prefix frontend/vite-project && npm run build --prefix frontend/vite-project"
 	},
 	"keywords": [],
 	"author": "",
