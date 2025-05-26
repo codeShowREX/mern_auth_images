@@ -12,10 +12,12 @@ dist
 dist-ssr
 *.local
 
-# Environment variables
+# Environment variables and sensitive configs
 .env
 .env.local
 .env.*.local
+backend/config.js
+**/config.js
 
 # Editor directories and files
 .vscode/*

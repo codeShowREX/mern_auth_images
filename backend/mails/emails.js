@@ -4,7 +4,10 @@ import { sendEmail } from "./sendgrid.js";
 export const sendVerificationEmail = async (email, verificationToken) => {
 	try {
 		const subject = "Verify Your Email";
-		const html = VERIFICATION_EMAIL_TEMPLATE.replace("{verificationCode}", verificationToken);
+		const html = VERIFICATION_EMAIL_TEMPLATE.replace(
+			"{verificationCode}",
+			String(verificationToken).trim()
+		);
 		return await sendEmail({ to: email, subject, html });
 	} catch (error) {
 		console.error("Error sending verification email:", error);
@@ -15,7 +18,10 @@ export const sendVerificationEmail = async (email, verificationToken) => {
 export const sendWelcomeEmail = async (email, name) => {
 	try {
 		const subject = "Welcome to Mern-Auth Services";
-		const html = WELCOME_EMAIL_TEMPLATE.replace("{name}", name);
+		const html = WELCOME_EMAIL_TEMPLATE.replace(
+			"{name}",
+			String(name).trim()
+		);
 		return await sendEmail({ to: email, subject, html });
 	} catch (error) {
 		console.error("Error sending welcome email:", error);
@@ -27,9 +33,16 @@ export const sendPasswordResetRequestEmail = async (email, resetToken) => {
 	try {
 		const subject = "Password Reset Request";
 		const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-		const resetUrl = encodeURI(`${frontendUrl}/reset-password/${resetToken}`);
+		// Ensure the token is properly encoded for URLs
+		const encodedToken = encodeURIComponent(String(resetToken).trim());
+		const resetUrl = `${frontendUrl}/reset-password/${encodedToken}`;
+		
 		console.log('Generated reset URL:', resetUrl);
-		const html = PASSWORD_RESET_REQUEST_TEMPLATE.replace(/{resetURL}/g, resetUrl);
+		
+		const html = PASSWORD_RESET_REQUEST_TEMPLATE.replace(
+			"{resetURL}",
+			resetUrl
+		);
 		return await sendEmail({ to: email, subject, html });
 	} catch (error) {
 		console.error("Error sending password reset email:", error);
