@@ -32,7 +32,7 @@ export const sendWelcomeEmail = async (email, name) => {
 export const sendPasswordResetRequestEmail = async (email, resetToken) => {
 	try {
 		const subject = "Password Reset Request";
-		const resetUrl = process.env.FRONTEND_URL || 'https://mern-auth-m0gi.onrender.com//reset-password/';
+		const frontendUrl = process.env.FRONTEND_URL || 'https://mern-auth-m0gi.onrender.com/reset-password/';
 		// Ensure the token is properly encoded for URLs
 		const encodedToken = encodeURIComponent(String(resetToken).trim());
 		const resetUrl = `${frontendUrl}/reset-password/${encodedToken}`;
