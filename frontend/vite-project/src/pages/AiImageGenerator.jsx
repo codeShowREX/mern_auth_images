@@ -59,7 +59,10 @@ const AiImageGenerator = () => {
           'Authorization': `Bearer ${HUGGINGFACE_TOKEN}`
         },
         responseType: 'arraybuffer',
-        timeout: 60000 // 1 minute timeout
+        timeout: 60000, // 1 minute timeout
+        httpsAgent: new (require('https').Agent)({  
+          rejectUnauthorized: false // Note: This is not recommended for production
+        })
       });
 
       console.log('[DEBUG] Response received:', {
@@ -107,7 +110,9 @@ const AiImageGenerator = () => {
       } else if (err.code === 'ECONNABORTED') {
         errorMessage += "Request timed out. The server took too long to respond.";
       } else if (err.code === 'ERR_NETWORK') {
-        errorMessage += "Cannot connect to the server. Please check your internet connection.";
+        errorMessage += "Cannot connect to the server. Please check your internet connection and ensure you're not behind a proxy or VPN that might be blocking the connection.";
+      } else if (err.code === 'CERT_HAS_EXPIRED' || err.code === 'UNABLE_TO_VERIFY_LEAF_SIGNATURE') {
+        errorMessage += "SSL certificate verification failed. Please check your system's date and time settings.";
       } else {
         errorMessage += err.message || "An unexpected error occurred.";
       }
