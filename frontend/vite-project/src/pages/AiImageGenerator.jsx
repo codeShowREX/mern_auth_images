@@ -41,20 +41,22 @@ const AiImageGenerator = () => {
 
       setGenerationStatus("Generating image with Stable Diffusion...");
       
-      // Use the backend proxy endpoint
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      console.log('[DEBUG] Sending request to backend:', {
-        url: `${apiUrl}/api/auth/generate-image`,
+      // Use the Hugging Face Inference API endpoint directly
+      // WARNING: Do NOT expose your Hugging Face token in frontend code in production!
+      const apiUrl = 'https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2';
+      const HUGGING_FACE_TOKEN = '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';
+      console.log('[DEBUG] Sending request to Hugging Face API:', {
+        url: apiUrl,
         prompt: prompt
       });
 
       const response = await axios({
         method: 'post',
-        url: `${apiUrl}/api/auth/generate-image`,
-        data: { prompt },
+        url: apiUrl,
+        data: { inputs: prompt },
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${HUGGING_FACE_TOKEN}`
         },
         responseType: 'arraybuffer',
         timeout: 60000 // 1 minute timeout
