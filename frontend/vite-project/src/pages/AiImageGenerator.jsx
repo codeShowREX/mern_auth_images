@@ -43,20 +43,20 @@ const AiImageGenerator = () => {
       
       // Use the Hugging Face Inference API endpoint directly
       // WARNING: Do NOT expose your Hugging Face token in frontend code in production!
-      const apiUrl = 'https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2';
-      const HUGGING_FACE_TOKEN = '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';
+      const MODEL_URL = 'https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2';
+      const HUGGINGFACE_TOKEN = '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';
       console.log('[DEBUG] Sending request to Hugging Face API:', {
-        url: apiUrl,
+        url: MODEL_URL,
         prompt: prompt
       });
 
       const response = await axios({
         method: 'post',
-        url: apiUrl,
+        url: MODEL_URL,
         data: { inputs: prompt },
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${HUGGING_FACE_TOKEN}`
+          'Authorization': `Bearer ${HUGGINGFACE_TOKEN}`
         },
         responseType: 'arraybuffer',
         timeout: 60000 // 1 minute timeout
